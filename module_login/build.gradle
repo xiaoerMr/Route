@@ -1,0 +1,56 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+
+        consumerProguardFiles "consumer-rules.pro"
+
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions{
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation rootProject.ext.google_dependencies["coreKtx"]
+    implementation rootProject.ext.google_dependencies["appcompat"]
+    implementation rootProject.ext.google_dependencies["constraintlayout"]
+    implementation rootProject.ext.google_dependencies["viewmodelKtx"]
+//    implementation rootProject.ext.google_dependencies["activityKtx"]
+//    implementation rootProject.ext.google_dependencies["androidxViewmodel"]
+
+    implementation rootProject.ext.http_dependencies["retrofit"]
+
+    implementation rootProject.ext.three_dependencies["arouterApi"]
+    kapt rootProject.ext.three_dependencies["arouterCompiler"]
+
+    implementation project(path: ':module_basis')
+}
