@@ -30,6 +30,10 @@ class LoginActivity : BaseActivity() {
             ARouter.getInstance().build(RoutePath.pageMain).navigation()
         }
 
+
+    }
+
+    override fun initData() {
         mViewModel.login("admin", "123abc")
             .observe(this,
                 {
@@ -37,9 +41,5 @@ class LoginActivity : BaseActivity() {
                 })
 
         mViewModel.showWarningMsg().observe(this,{toast(it)})
-    }
-
-    override fun initData() {
-
     }
 }

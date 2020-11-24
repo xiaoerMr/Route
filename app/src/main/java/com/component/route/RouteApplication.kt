@@ -2,7 +2,9 @@ package com.component.route
 
 import android.app.Application
 import com.alibaba.android.arouter.launcher.ARouter
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class RouteApplication :Application() {
     override fun onCreate() {
         super.onCreate()

@@ -20,6 +20,13 @@ class MainActivity : BaseActivity() {
             toast("this is main")
             ARouter.getInstance().build(RoutePath.pageLogin).navigation()
         }
+
+        jumpModuleHilt.setOnClickListener {
+            toast("this is main")
+            ARouter.getInstance().build(RoutePath.pageHilt).navigation()
+        }
+
+
     }
 
     override fun initData() {
