@@ -5,7 +5,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.component.module_basis.RoutePath
 import com.component.module_basis.base.BaseActivity
+import com.component.module_basis.http.ApiService
 import dagger.hilt.android.AndroidEntryPoint
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import javax.inject.Inject
 
@@ -15,6 +17,11 @@ class HiltActivity : BaseActivity() {
 
 //    @Inject
 //    lateinit var okhttp: Retrofit
+
+
+
+//    @Inject
+//    lateinit var client: OkHttpClient
 
     // 获取viewModel (使用了注入方式)
     private val viewModel: HiltViewModel by lazy { ViewModelProvider(this).get(HiltViewModel::class.java) }

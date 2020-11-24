@@ -44,3 +44,28 @@
    class HiltViewModel @ViewModelInject constructor( val repository: HiltRepository) : ViewModel() {}
 - 创建 HiltRepository 注解 @Inject
    class HiltRepository @Inject constructor(){}
+- 注入Retrofit （ 在 HiltRepository 中使用 ，而在 HiltRetrofit 中告诉 hilt 怎么实例化）
+    @Inject
+    lateinit var apiService: ApiService
+    //此时就可以使用 apiService 了
+- 创建 HiltRetrofit
+    @Module
+    @InstallIn(SingletonComponent::class) // 全局范围
+    object HiltRetrofit {
+
+        @Singleton // 单例
+        @Provides
+        fun provideApiService():ApiService {
+            return Retrofit.Builder()
+                .baseUrl("http://45.32.43.43")
+                .build()
+                .create(ApiService::class.java)
+        }
+
+        @Singleton
+        @Provides
+        fun provideRetrofit(): ApiService {
+            // RetrofitClient 自己封装的 Retrofit ；与上面效果相同
+            return RetrofitClient.instance.onCreateApiService(ApiService::class.java)
+        }
+    }
