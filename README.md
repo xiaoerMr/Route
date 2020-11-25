@@ -18,13 +18,13 @@
 
 ## hilt使用示例模块
  参考文章： https://mp.weixin.qq.com/s/OEX1d2cU1zGG5BBM-nANBg
-- 在 根项目的gradle中
+1. 在 根项目的gradle中
 
 ```groovy
     classpath 'com.google.dagger:hilt-android-gradle-plugin:2.28-alpha'
 ```
 
-- 在app 项目的gradle中
+2. 在app 项目的gradle中
 
 ```groovy
    apply plugin: 'kotlin-android'
@@ -44,40 +44,59 @@
 
 ```
   
-- 在Application中注解  @HiltAndroidApp
+3. 在Application中注解  
 
-- 在Activity 中注解 @AndroidEntryPoint
-   创建viewModel  常规方式
+```kotlin
+    @HiltAndroidApp
+    class MyApplication : Application(){
+    }
+```
+
+4. 在Activity 中注解 
    
 ```kotlin
-   private val viewModel:HiltViewModel by lazy { ViewModelProvider(this).get(HiltViewModel::class.java) }
+    @AndroidEntryPoint
+    class MainActivity : BaseActivity(){
+       
+        //创建viewModel  常规方式
+        private val viewModel:HiltViewModel by lazy { ViewModelProvider(this).get(HiltViewModel::class.java) }
+        
+        // 注入其他一般类
+        @Inject
+        lateinit var adapter: MyAdapter
+
+    }
+
+    // 定义并使用注解  @Inject
+    class MyAdapter @Inject constructor() : Adapter(){
+    
+    }   
 ```   
 
-- 创建 HiltViewModel 注解 @ViewModelInject
+5. 创建 HiltViewModel 注解 @ViewModelInject
 
 ```kotlin
    class HiltViewModel @ViewModelInject constructor( val repository: HiltRepository) : ViewModel() {}
 ```
 
-- 创建 HiltRepository 注解 @Inject
+6. 创建 HiltRepository 注解 @Inject
 
 ```kotlin
    class HiltRepository @Inject constructor(){}
-
 ```
 
-- 注入Retrofit （ 在 HiltRepository 中使用 ，而在 HiltRetrofit 中告诉 hilt 怎么实例化）
+7. 注入Retrofit （ 在 HiltRepository 中使用 ，而在 HiltRetrofit 中告诉 hilt 怎么实例化）
    
 ```kotlin
- @Inject
+    @Inject
     lateinit var apiService: ApiService
     //此时就可以使用 apiService 了
 ```
    
-- 创建 HiltRetrofit
+8. 创建 HiltRetrofit
 
 ```kotlin
- @Module
+    @Module
     @InstallIn(SingletonComponent::class) // 全局范围
     object HiltRetrofit {
 
