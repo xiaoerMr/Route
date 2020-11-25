@@ -8,7 +8,92 @@
 - moduel_hilt  hilt使用示例模块
 ## App 模块
 程序入口。
-	跳转到登陆模块
+	跳转到登陆模块 （ARoute 阿里路由开源框架）
+1. 在 App目录下的 gradle	每个模块都需导入该设置
+
+```groovy
+
+    apply plugin: 'kotlin-kapt'
+
+     defaultConfig {
+         kapt {
+             arguments {
+                 arg("AROUTER_MODULE_NAME", project.getName())
+             }
+         }
+     }
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+    dependencies {
+    
+        // 路由框架
+        implementation  'com.alibaba:arouter-api:1.5.1'
+        kapt 'com.alibaba:arouter-compiler:1.5.1'
+    
+        //导入其他模块
+        implementation project(path: ':module_basis')
+        implementation project(path: ':module_login')
+        implementation project(path: ':module_hilt')
+    }
+```
+
+2. 在 application 中初始化	
+
+```kotlin
+
+     private fun initARouter() {
+        if (BuildConfig.DEBUG){
+            ARouter.openLog()
+            ARouter.openDebug()
+        }
+       ARouter.init(this)
+    }
+
+```
+
+3. 定义 路由
+
+```kotlin
+
+    object RoutePath{
+        // 最少两级目录
+        const val pageMain = "/app/mainActivity"
+        const val pageLogin = "/login/loginActivity"
+        const val pageHilt = "/hilt/HiltActivity"
+    }
+
+```
+
+4. Activity中使用
+
+```kotlin
+
+    // 注解当前  Activity ，用于跳转
+    @Route(path = RoutePath.pageMain)
+    class MainActivity : BaseActivity() {
+
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+
+                jumpModuleLogin.setOnClickListener {
+                    //跳转到目标页面
+                    ARouter.getInstance().build(RoutePath.pageLogin).navigation()
+                }
+        }
+
+    }
+
+    // 注解当前  Activity ，用于跳转
+    @Route(path = RoutePath.pageLogin)
+    class LoginActivity : BaseActivity() {}
+
+```
+
 ## 基础模块
 - 封装网络请求功能 kotlin 扩展功能
 - toast 常量定义类
