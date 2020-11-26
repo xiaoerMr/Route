@@ -41,5 +41,10 @@ dependencies {
     implementation rootProject.ext.http_dependencies["gson"]
     implementation rootProject.ext.http_dependencies["loggingInterceptor"]
 
+    implementation rootProject.ext.three_dependencies["dialogsCore"]
+    implementation rootProject.ext.three_dependencies["dialogsInput"]
+    implementation rootProject.ext.three_dependencies["dialogsDataTime"]
+    implementation rootProject.ext.three_dependencies["dialogsBottomsheets"]
+
 
 }

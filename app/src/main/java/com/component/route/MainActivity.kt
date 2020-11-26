@@ -26,6 +26,10 @@ class MainActivity : BaseActivity() {
             ARouter.getInstance().build(RoutePath.pageHilt).navigation()
         }
 
+        jumpDialog.setOnClickListener {
+            DialogActivity.jumpDialogActivity(this)
+        }
+
 
     }
 
