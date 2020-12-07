@@ -1,12 +1,14 @@
 package com.component.module_basis.dialog
 
 import android.content.Context
-import android.text.InputType
+import com.afollestad.materialdialogs.DialogBehavior
 import com.afollestad.materialdialogs.DialogCallback
 import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.ModalDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.bottomsheets.GridItemListener
 import com.afollestad.materialdialogs.bottomsheets.gridItems
+import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.datetime.DateTimeCallback
 import com.afollestad.materialdialogs.datetime.datePicker
 import com.afollestad.materialdialogs.datetime.dateTimePicker
@@ -22,6 +24,17 @@ import com.component.module_basis.R
 object DialogHandle {
 
     private val dialogIcon = R.drawable.ic_dialog
+    private lateinit var loadingDialog: MaterialDialog
+
+    fun loadingShow(windowContext: Context, cancelOutside: Boolean = false) {
+        loadingDialog = MaterialDialog(windowContext)
+            .cancelOnTouchOutside(cancelOutside)
+            .customView(R.layout.view_dialog_loading)
+    }
+
+    fun loadingDismiss() {
+        loadingDialog?.let { it.dismiss() }
+    }
 
     /**
      * 标准的dialog 确认取消按钮，标题，内容，确认回调

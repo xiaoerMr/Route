@@ -2,6 +2,7 @@ package com.component.route
 
 import android.app.Application
 import com.alibaba.android.arouter.launcher.ARouter
+import com.tencent.mmkv.MMKV
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
@@ -11,6 +12,9 @@ class RouteApplication :Application() {
 
         //路由
         initARouter()
+
+        MMKV.initialize(this)
+
     }
 
     private fun initARouter() {

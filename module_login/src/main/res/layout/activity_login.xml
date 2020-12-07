@@ -4,15 +4,100 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingStart="32dp"
+    android:paddingEnd="32dp"
     tools:context=".LoginActivity">
 
-    <Button
+    <TextView
+        android:id="@+id/loginRegistered"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="跳转主模块"
-        android:id="@+id/jumpModuleMain"
+        android:layout_marginTop="32dp"
+        android:padding="4dp"
+        android:text="@string/registered"
+        android:textColor="@color/colorBlue"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="32dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toTopOf="@id/loginUserNameLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:shapeAppearanceOverlay="@style/roundedCornerImageStyle"
+        app:srcCompat="@drawable/ic_login_img"
+        app:strokeColor="@color/colorGreen"
+        app:strokeWidth="4dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/loginUserNameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:counterEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/loginUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/login_hint_username" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/loginPasswordLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:counterEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginUserNameLayout"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/colorGreen"
+        app:passwordToggleTintMode="multiply">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/loginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/login_hint_password"
+            android:inputType="textPassword"
+            app:counterEnabled="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/loginForget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:padding="4dp"
+        android:text="@string/forget"
+        android:textColor="@color/colorRed"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginPasswordLayout" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/jumpModuleMain"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/bt_select"
+        android:gravity="center"
+        android:text="@string/login"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginPasswordLayout" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

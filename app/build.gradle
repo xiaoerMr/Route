@@ -52,6 +52,9 @@ dependencies {
     implementation rootProject.ext.three_dependencies["arouterApi"]
     kapt rootProject.ext.three_dependencies["arouterCompiler"]
 
+    implementation rootProject.ext.three_dependencies["mmkv"]
+
+
     implementation project(path: ':module_basis')
     implementation project(path: ':module_login')
     implementation project(path: ':module_hilt')

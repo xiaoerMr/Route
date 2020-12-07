@@ -44,6 +44,8 @@ dependencies {
     implementation rootProject.ext.google_dependencies["appcompat"]
     implementation rootProject.ext.google_dependencies["constraintlayout"]
     implementation rootProject.ext.google_dependencies["viewmodelKtx"]
+    implementation rootProject.ext.google_dependencies["material"]
+
 //    implementation rootProject.ext.google_dependencies["activityKtx"]
 //    implementation rootProject.ext.google_dependencies["androidxViewmodel"]
 
@@ -51,6 +53,8 @@ dependencies {
 
     implementation rootProject.ext.three_dependencies["arouterApi"]
     kapt rootProject.ext.three_dependencies["arouterCompiler"]
+
+    implementation rootProject.ext.three_dependencies["mmkv"]
 
     implementation project(path: ':module_basis')
 }
