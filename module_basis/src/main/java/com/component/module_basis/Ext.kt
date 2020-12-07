@@ -9,7 +9,9 @@ fun Context.toast(msg:String){
     Toast.makeText(this,msg,Toast.LENGTH_SHORT).show()
 }
 
-fun Context.loge(msg:String){
-    Log.e("TAG",msg)
+fun loge(msg:String){
+    if (BuildConfig.DEBUG) {
+        Log.e("TAG",msg)
+    }
 }
 

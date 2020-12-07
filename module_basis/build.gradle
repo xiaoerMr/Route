@@ -50,5 +50,7 @@ dependencies {
     implementation DepThree.dialogsDataTime
     implementation DepThree.dialogsBottomsheets
 
+    implementation DepThree.permissionX
+
 
 }

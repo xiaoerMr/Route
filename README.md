@@ -100,7 +100,8 @@
 ```
 
 ## 基础模块
-- 封装网络请求功能 kotlin 扩展功能
+- 封装网络请求功能 
+- kotlin 扩展功能
 - toast 常量定义类
 
 ## 登陆模块
@@ -209,7 +210,7 @@
 ```
 
 ## module_version  依赖版本管理模块
-1. 创建一个新 Module ， 名为：module_version
+1. 创建一个新 Module ， 名为：module_version。
    可以只保留 "包名" 下的文件 和 build.gradle， 其他文件可删除（如 res，lib）
    
 2. 修改 本模块下的build.gradle
@@ -318,12 +319,12 @@ import com.component.module_version.*
 
 ```groovy
 
-    // 版本依赖
-    compileSdkVersion BuildsVersion.compileSdkVersion
-    buildToolsVersion BuildsVersion.buildToolsVersion
+// 版本依赖
+compileSdkVersion BuildsVersion.compileSdkVersion
+buildToolsVersion BuildsVersion.buildToolsVersion
 
-    // Retrofit 等依赖
-    implementation DepHttp.retrofit
-    implementation DepHttp.gson
+// Retrofit 等依赖
+implementation DepHttp.retrofit
+implementation DepHttp.gson
 
 ```

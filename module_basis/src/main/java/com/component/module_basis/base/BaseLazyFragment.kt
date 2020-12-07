@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.component.module_basis.loge
 
 abstract class BaseLazyFragment : Fragment() {
     lateinit var mContext: Context
@@ -33,10 +32,10 @@ abstract class BaseLazyFragment : Fragment() {
         initData()
     }
 
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        mContext.loge("onHiddenChanged: Fragment hidden is $hidden")
-    }
+//    override fun onHiddenChanged(hidden: Boolean) {
+//        super.onHiddenChanged(hidden)
+//       loge("--- onHiddenChanged: Fragment hidden is $hidden")
+//    }
     //        mActivity.supportFragmentManager
 //            .beginTransaction()
 //            .setMaxLifecycle(this, Lifecycle.State.RESUMED)
