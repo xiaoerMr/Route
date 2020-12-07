@@ -1,3 +1,4 @@
+includeBuild("module_version")
 include ':module_hilt'
 include ':module_login'
 include ':module_basis'

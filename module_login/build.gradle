@@ -1,17 +1,21 @@
+plugins{
+    id "com.component.module_version"
+}
+import com.component.module_version.*
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
-    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+    compileSdkVersion BuildsVersion.compileSdkVersion
+    buildToolsVersion BuildsVersion.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion rootProject.ext.android["minSdkVersion"]
-        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
-        versionCode rootProject.ext.android["versionCode"]
-        versionName rootProject.ext.android["versionName"]
+        minSdkVersion BuildsVersion.minSdkVersion
+        targetSdkVersion BuildsVersion.targetSdkVersion
+        versionCode BuildsVersion.versionCode
+        versionName BuildsVersion.versionName
 
         consumerProguardFiles "consumer-rules.pro"
 
@@ -40,21 +44,21 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation rootProject.ext.google_dependencies["coreKtx"]
-    implementation rootProject.ext.google_dependencies["appcompat"]
-    implementation rootProject.ext.google_dependencies["constraintlayout"]
-    implementation rootProject.ext.google_dependencies["viewmodelKtx"]
-    implementation rootProject.ext.google_dependencies["material"]
+    implementation DepAndroid.coreKtx
+    implementation DepAndroid.appcompat
+    implementation DepAndroid.constraintlayout
+    implementation DepAndroid.viewmodelKtx
+    implementation DepAndroid.material
 
-//    implementation rootProject.ext.google_dependencies["activityKtx"]
-//    implementation rootProject.ext.google_dependencies["androidxViewmodel"]
+//    implementation DepAndroid.activityKtx
+//    implementation DepAndroid.androidxViewmodel
 
-    implementation rootProject.ext.http_dependencies["retrofit"]
+    implementation DepHttp.retrofit
 
-    implementation rootProject.ext.three_dependencies["arouterApi"]
-    kapt rootProject.ext.three_dependencies["arouterCompiler"]
+    implementation DepThree.arouterApi
+    kapt DepThree.arouterCompiler
 
-    implementation rootProject.ext.three_dependencies["mmkv"]
+    implementation DepThree.mmkv
 
     implementation project(path: ':module_basis')
 }

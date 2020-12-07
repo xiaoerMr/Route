@@ -1,17 +1,20 @@
+plugins{
+    id "com.component.module_version"
+}
+import com.component.module_version.*
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
-    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+    compileSdkVersion BuildsVersion.compileSdkVersion
+    buildToolsVersion BuildsVersion.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion rootProject.ext.android["minSdkVersion"]
-        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
-        versionCode rootProject.ext.android["versionCode"]
-        versionName rootProject.ext.android["versionName"]
-
+        minSdkVersion BuildsVersion.minSdkVersion
+        targetSdkVersion BuildsVersion.targetSdkVersion
+        versionCode BuildsVersion.versionCode
+        versionName BuildsVersion.versionName
 
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -33,19 +36,19 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    implementation rootProject.ext.google_dependencies["fragmentKtx"]
-    implementation rootProject.ext.google_dependencies["coroutines"]
-    implementation rootProject.ext.google_dependencies["appcompat"]
+    implementation DepAndroid.fragmentKtx
+    implementation DepAndroid.coroutines
+    implementation DepAndroid.appcompat
 
-    implementation rootProject.ext.http_dependencies["retrofit"]
-    implementation rootProject.ext.http_dependencies["converterGson"]
-    implementation rootProject.ext.http_dependencies["gson"]
-    implementation rootProject.ext.http_dependencies["loggingInterceptor"]
+    implementation DepHttp.retrofit
+    implementation DepHttp.converterGson
+    implementation DepHttp.gson
+    implementation DepHttp.loggingInterceptor
 
-    implementation rootProject.ext.three_dependencies["dialogsCore"]
-    implementation rootProject.ext.three_dependencies["dialogsInput"]
-    implementation rootProject.ext.three_dependencies["dialogsDataTime"]
-    implementation rootProject.ext.three_dependencies["dialogsBottomsheets"]
+    implementation DepThree.dialogsCore
+    implementation DepThree.dialogsInput
+    implementation DepThree.dialogsDataTime
+    implementation DepThree.dialogsBottomsheets
 
 
 }

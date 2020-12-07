@@ -1,11 +1,16 @@
+[TOC]
+
 # Route
 ## 项目介绍
 该项目只是简单的组件化开发的示例，搭建了组件化开发的雏形。 暂时没有实现内容的开发工作，目前实现功能有： 网络模块的封装、ARoute的使用方法、登陆功能的实现（UI未实现）。
+
 ## 组件划分
 - App 模块
-- moduel_basis 基础模块
-- moduel_login  登陆模块
-- moduel_hilt  hilt使用示例模块
+- module_basis 基础模块
+- module_login  登陆模块
+- module_hilt  hilt使用示例模块
+- module_version  依赖版本管理模块
+
 ## App 模块
 程序入口。
 	跳转到登陆模块 （ARoute 阿里路由开源框架）
@@ -201,4 +206,124 @@
             return RetrofitClient.instance.onCreateApiService(ApiService::class.java)
         }
     }
+```
+
+## module_version  依赖版本管理模块
+1. 创建一个新 Module ， 名为：module_version
+   可以只保留 "包名" 下的文件 和 build.gradle， 其他文件可删除（如 res，lib）
+   
+2. 修改 本模块下的build.gradle
+
+```groovy
+
+buildscript {
+    repositories {
+        jcenter()
+        google()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10"
+    }
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'java-gradle-plugin'
+
+repositories {
+    jcenter()
+    google()
+}
+
+dependencies {
+    implementation gradleApi()
+    implementation "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10"
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+gradlePlugin {
+    plugins {
+        version {
+            // 包名
+            id = 'com.component.module_version'
+            //在根目录下创建类 DependencyVersionPlugin 继承 Plugin<Project> 
+            implementationClass = 'com.component.module_version.DependencyVersionPlugin'
+        }
+    }
+}
+
+```
+3. 创建依赖库文件 BuildsVersion
+
+```kotlin
+
+object BuildsVersion {
+    val compileSdkVersion = 30
+    val buildToolsVersion = "30.0.2"
+    val minSdkVersion = 22
+    val targetSdkVersion = 30
+    val versionCode = 1
+    val versionName = "1.0"
+}
+
+```
+
+其他依赖项, 可根据自己意愿分类引入, 如定义 http 依赖文件
+
+```kotlin
+
+object DepHttp {
+    val retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
+    val converterGson = "com.squareup.retrofit2:converter-gson:2.9.0"
+    val gson = "com.google.code.gson:gson:2.8.6"
+    val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:4.0.0"
+}
+
+```
+
+4. 在根目录的 settings.gradle文件中添加
+
+```groovy
+
+    // 依赖版本模块
+ includeBuild("module_version")
+
+```
+
+5. 在需要的 module  build.gradle中 添加使用
+
+```groovy
+
+// 在文件 build.gradle 的第一行添加
+plugins{
+    // 包名
+    id "com.component.module_version"
+}
+
+// 定义的依赖地址
+import com.component.module_version.*
+
+```
+
+6. 添加依赖
+
+```groovy
+
+    // 版本依赖
+    compileSdkVersion BuildsVersion.compileSdkVersion
+    buildToolsVersion BuildsVersion.buildToolsVersion
+
+    // Retrofit 等依赖
+    implementation DepHttp.retrofit
+    implementation DepHttp.gson
+
 ```
