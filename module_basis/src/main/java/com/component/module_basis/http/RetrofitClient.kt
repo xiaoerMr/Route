@@ -2,6 +2,7 @@ package com.component.module_basis.http
 
 import com.component.module_basis.BuildConfig
 import com.component.module_basis.http.interceptor.CommonInterceptor
+import com.component.module_basis.http.interceptor.LogInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -29,21 +30,27 @@ class RetrofitClient {
     }
 
     private fun initClient(): OkHttpClient {
+        val log = HttpLoggingInterceptor(LogInterceptor())
+
+        if (BuildConfig.DEBUG)  log.level = HttpLoggingInterceptor.Level.BODY
+        else  log.level = HttpLoggingInterceptor.Level.BASIC
+
         return OkHttpClient.Builder()
-            .addInterceptor(initLogInterceptor())
+            .addInterceptor(log)
             .addInterceptor(CommonInterceptor())
             .connectTimeout(10, TimeUnit.SECONDS)
             .readTimeout(10, TimeUnit.SECONDS)
+            .writeTimeout(10, TimeUnit.SECONDS)
             .build()
     }
 
 
-    private fun initLogInterceptor(): HttpLoggingInterceptor {
-        val logging = HttpLoggingInterceptor()
+//    private fun initLogInterceptor(): HttpLoggingInterceptor {
+//        val logging = HttpLoggingInterceptor()
+//
+//        if (BuildConfig.DEBUG) logging.level = HttpLoggingInterceptor.Level.BODY
+//        else logging.level = HttpLoggingInterceptor.Level.BASIC
+//        return logging
+//    }
 
-        if (BuildConfig.DEBUG) logging.level = HttpLoggingInterceptor.Level.BODY
-        else logging.level = HttpLoggingInterceptor.Level.BASIC
-
-        return logging
-    }
 }

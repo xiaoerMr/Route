@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentActivity
 import com.permissionx.guolindev.PermissionX
 import java.lang.RuntimeException
 
-class PermissionUtils {
+class PermissionHandler {
 
     private val forwardToSettings = "您需要去设置当中同意请求的权限"
     private lateinit var buidler: Builder

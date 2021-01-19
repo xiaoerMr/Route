@@ -39,6 +39,7 @@ dependencies {
     implementation DepAndroid.fragmentKtx
     implementation DepAndroid.coroutines
     implementation DepAndroid.appcompat
+    implementation DepAndroid.recyclerView
 
     implementation DepHttp.retrofit
     implementation DepHttp.converterGson

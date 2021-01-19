@@ -63,6 +63,13 @@ class LoginActivity : BaseActivity() {
         jumpModuleMain.setOnClickListener {
             verification()
         }
+
+        // 请求失败
+        mViewModel.showWarningMsg().observe(this, {
+            DialogHandle.loadingDismiss()
+//            DialogHandle.basicTip(this,"失败",it)
+            toast(it)
+        })
     }
 
     override fun initData() {
@@ -99,11 +106,6 @@ class LoginActivity : BaseActivity() {
                     ARouter.getInstance().build(RoutePath.pageMain).navigation()
                     finish()
                 })
-
-        mViewModel.showWarningMsg().observe(this, {
-            DialogHandle.loadingDismiss()
-            toast(it)
-        })
     }
 
     private fun saveLoginInfo(resUser: ResUser) {

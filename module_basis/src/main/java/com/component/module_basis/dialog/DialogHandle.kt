@@ -1,10 +1,8 @@
 package com.component.module_basis.dialog
 
 import android.content.Context
-import com.afollestad.materialdialogs.DialogBehavior
 import com.afollestad.materialdialogs.DialogCallback
 import com.afollestad.materialdialogs.MaterialDialog
-import com.afollestad.materialdialogs.ModalDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.bottomsheets.GridItemListener
 import com.afollestad.materialdialogs.bottomsheets.gridItems
@@ -36,6 +34,24 @@ object DialogHandle {
         loadingDialog?.let { it.dismiss() }
     }
 
+    /**
+     * 标准的dialog 确认按钮，标题，内容，确认回调
+     */
+    fun basicTip(
+        windowContext: Context,
+        title: String,
+        msg: String,
+        cancelOutside: Boolean = false
+    ) {
+        MaterialDialog(windowContext)
+            .icon(dialogIcon)
+            .cancelOnTouchOutside(cancelOutside)
+            .positiveButton()
+            .show {
+                title(text = title)
+                message(text = msg)
+            }
+    }
     /**
      * 标准的dialog 确认取消按钮，标题，内容，确认回调
      */

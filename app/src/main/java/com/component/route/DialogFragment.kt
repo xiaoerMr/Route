@@ -41,11 +41,12 @@ class DialogFragment : BaseLazyFragment() {
         val listItem = listOf("第一", "第二", "第三", "第四", "第五", "第六", "第七", "第八", "第九")
 
         view.button.setOnClickListener {
-            DialogHandle.basic(
-                mContext,
-                "基础弹窗",
-                "我说消息弹窗内容",
-                { mContext.toast("点击了确定按钮") })
+//            DialogHandle.basic(
+//                mContext,
+//                "基础弹窗",
+//                "我说消息弹窗内容",
+//                { mContext.toast("点击了确定按钮") })
+            DialogHandle.basicTip(mContext,"失败","只有一个按钮")
         }
 
         view.button2.setOnClickListener {

@@ -3,7 +3,7 @@ package com.component.module_basis.permission
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 
-class Builder(private val permissionUtils: PermissionUtils) {
+class Builder(private val permissionHandle: PermissionHandler) {
 
     private lateinit var activity: FragmentActivity
     private lateinit var fragment: Fragment
@@ -30,14 +30,14 @@ class Builder(private val permissionUtils: PermissionUtils) {
 
     fun getFragment() = fragment
 
-    fun permissions(permissions: List<String>): PermissionUtils {
+    fun permissions(permissions: List<String>): PermissionHandler {
         this.permissions = permissions
-        return permissionUtils
+        return permissionHandle
     }
 
-    fun permissions(vararg permissions: String): PermissionUtils {
+    fun permissions(vararg permissions: String): PermissionHandler {
         this.permissions = permissions.asList()
-        return permissionUtils
+        return permissionHandle
     }
 
     fun getPermissions() = permissions

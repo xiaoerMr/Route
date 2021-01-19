@@ -47,8 +47,11 @@ dependencies {
     implementation DepAndroid.coreKtx
     implementation DepAndroid.appcompat
     implementation DepAndroid.constraintlayout
-    
+    implementation DepAndroid.recyclerView
+
     implementation DepAndroid.hiltAndroid
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     kapt DepAndroid.hiltAndroidCompiler
     implementation DepAndroid.hiltLifecycleViewmodel
     kapt DepAndroid.hiltCompiler

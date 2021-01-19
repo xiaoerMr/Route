@@ -41,7 +41,10 @@ open class BaseRepository {
             if (response.code == ApiService.successCode) {
                 successBlock?.let { it() }
                 NetRequestResult.Success(response.data)
-            } else {
+//            }else if (response.code ==  404){
+//                token 失效逻辑
+//                NetRequestResult.Error(ResultException(response.code, response.error))
+            }else {
                 errorBlock?.let { it() }
                 NetRequestResult.Error(ResultException(response.code, response.error))
             }

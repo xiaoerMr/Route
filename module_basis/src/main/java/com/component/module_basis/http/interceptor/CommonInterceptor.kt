@@ -15,6 +15,11 @@ class CommonInterceptor : Interceptor {
     }
 
     private fun addHeader(builder: Request.Builder): Request {
+//        if (!builder.build().url.encodedPath.contains("login")) {
+//            return builder.addHeader("Content_Type", "application/json")
+//                .addHeader("token","MMKV()")
+//                .addHeader("charset", "UTF-8").build()
+//        }
         return builder.addHeader("Content_Type", "application/json")
             .addHeader("charset", "UTF-8").build()
     }

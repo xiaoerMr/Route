@@ -17,4 +17,5 @@ object DepAndroid {
     val hiltLifecycleViewmodel = "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02"
     val hiltCompiler = "androidx.hilt:hilt-compiler:1.0.0-alpha02"
 
+    val recyclerView = "androidx.recyclerview:recyclerview:1.1.0"
 }
