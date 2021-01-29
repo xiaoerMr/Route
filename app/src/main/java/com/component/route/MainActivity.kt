@@ -9,6 +9,7 @@ import com.component.module_basis.RoutePath
 import com.component.module_basis.permission.PermissionCallback
 import com.component.module_basis.permission.PermissionHandler
 import com.component.module_basis.toast
+import com.component.route.rv.RVActivity
 import com.tencent.mmkv.MMKV
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -34,11 +35,22 @@ class MainActivity : BaseActivity() {
             ARouter.getInstance().build(RoutePath.pageHilt).navigation()
         }
 
+        jumpMap.setOnClickListener {
+            toast("this is main")
+            ARouter.getInstance().build(RoutePath.pageMap).navigation()
+        }
+
+
+
+
         jumpDialog.setOnClickListener {
             DialogActivity.jumpDialogActivity(this)
         }
         jumpMotion.setOnClickListener {
             MotionActivity.jumpDialogActivity(this)
+        }
+        jumpRV.setOnClickListener {
+            RVActivity.jumpDialogActivity(this)
         }
 //        DialogHandle.loading(this)
     }

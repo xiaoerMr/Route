@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/vMarkerIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:src="@drawable/ic_airplane" />
+
+    <LinearLayout
+        android:id="@+id/vMarkerSignage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:background="@drawable/ic_border"
+        android:orientation="vertical"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/vMarkerIcon"
+        app:layout_constraintEnd_toEndOf="@+id/vMarkerIcon"
+        app:layout_constraintStart_toStartOf="@+id/vMarkerIcon">
+
+        <TextView
+            android:id="@+id/vMarkerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="sans-serif-black"
+            android:textColorHighlight="#58EFE2"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            tools:text="名称" />
+
+        <TextView
+            android:id="@+id/vMarkerRotate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            tools:text="航向角：104.66度" />
+
+        <TextView
+            android:id="@+id/vMarkerHeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            tools:text="高度：1001.88米" />
+
+        <TextView
+            android:id="@+id/vMarkerSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            tools:text="速度：100.99km/h" />
+
+        <TextView
+            android:id="@+id/vMarkerLng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            tools:text="经度：123.7654321" />
+
+        <TextView
+            android:id="@+id/vMarkerLat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            tools:text="纬度：112.1234567" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

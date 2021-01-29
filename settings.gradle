@@ -1,3 +1,4 @@
+include ':module_map'
 includeBuild("module_version")
 include ':module_hilt'
 include ':module_login'

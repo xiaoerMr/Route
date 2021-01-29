@@ -4,4 +4,5 @@ object RoutePath{
     const val pageMain = "/app/mainActivity"
     const val pageLogin = "/login/loginActivity"
     const val pageHilt = "/hilt/HiltActivity"
+    const val pageMap = "/map/pageMap"
 }

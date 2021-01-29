@@ -1,0 +1,69 @@
+plugins {
+//    id 'com.android.application'
+//    id 'kotlin-android'
+    id "com.component.module_version"
+}
+import com.component.module_version.*
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion BuildsVersion.compileSdkVersion
+    buildToolsVersion BuildsVersion.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion BuildsVersion.minSdkVersion
+        targetSdkVersion BuildsVersion.targetSdkVersion
+        versionCode BuildsVersion.versionCode
+        versionName BuildsVersion.versionName
+        ndk {
+            //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
+            abiFilters "armeabi-v7a" //, "armeabi", "arm64-v8a", "x86","x86_64"
+        }
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation DepAndroid.coreKtx
+    implementation DepAndroid.appcompat
+    implementation DepAndroid.constraintlayout
+
+    implementation project(path: ':module_basis')
+
+    implementation files('libs/AMap3DMap_7.8.0_AMapLocation_5.2.0_20201231.jar')
+
+    implementation DepThree.arouterApi
+    kapt DepThree.arouterCompiler
+
+    implementation DepAndroid.kotlinxCoroutines
+    implementation DepAndroid.runtimeKtx
+
+}

@@ -48,10 +48,9 @@ dependencies {
     implementation DepAndroid.appcompat
     implementation DepAndroid.constraintlayout
     implementation DepAndroid.recyclerView
+    implementation DepAndroid.pagingRuntime
 
     implementation DepAndroid.hiltAndroid
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     kapt DepAndroid.hiltAndroidCompiler
     implementation DepAndroid.hiltLifecycleViewmodel
     kapt DepAndroid.hiltCompiler
@@ -65,5 +64,6 @@ dependencies {
     implementation project(path: ':module_basis')
     implementation project(path: ':module_login')
     implementation project(path: ':module_hilt')
+    implementation project(path: ':module_map')
 
 }
