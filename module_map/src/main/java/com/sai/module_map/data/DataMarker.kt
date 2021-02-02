@@ -1,4 +1,4 @@
-package com.sai.module_map.marker
+package com.sai.module_map.data
 
 import com.amap.api.maps.model.LatLng
 

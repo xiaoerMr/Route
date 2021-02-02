@@ -11,6 +11,7 @@ import com.amap.api.maps.model.PolylineOptions
 import com.amap.api.maps.model.BitmapDescriptor
 import com.amap.api.maps.model.BitmapDescriptorFactory
 import com.sai.module_map.R
+import com.sai.module_map.data.DataOverlay
 
 class OverlayLine(private val aMap: AMap, private val context: Context) : OverlayLayout() {
 

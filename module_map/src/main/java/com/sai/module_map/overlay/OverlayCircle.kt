@@ -1,7 +1,6 @@
 package com.sai.module_map.overlay
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.widget.TextView
 import com.amap.api.maps.AMap
@@ -12,6 +11,7 @@ import com.amap.api.maps.model.CircleOptions
 import com.amap.api.maps.model.BitmapDescriptor
 import com.amap.api.maps.model.BitmapDescriptorFactory
 import com.sai.module_map.R
+import com.sai.module_map.data.DataCircleOverlay
 
 class OverlayCircle(private val aMap: AMap, private val context: Context) {
     private lateinit var marker: Marker

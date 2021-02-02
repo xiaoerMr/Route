@@ -11,6 +11,7 @@ import com.amap.api.maps.model.MarkerOptions
 import com.amap.api.maps.model.Polygon
 import com.amap.api.maps.model.PolygonOptions
 import com.sai.module_map.R
+import com.sai.module_map.data.DataOverlay
 
 class OverlayPolygon (private val aMap: AMap, private val context: Context):OverlayLayout() {
 

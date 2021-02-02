@@ -1,4 +1,4 @@
-package com.sai.module_map.marker
+package com.sai.module_map.overlay
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,14 +11,15 @@ import com.amap.api.maps.AMap
 import com.amap.api.maps.model.*
 import com.amap.api.maps.model.animation.TranslateAnimation
 import com.sai.module_map.R
+import com.sai.module_map.data.DataMarker
 
 
-class MoveMarker constructor(
+class OverlayMarkerMove constructor(
     private val context: Context,
-    private var dataMarker: DataMarker,
     private val aMap: AMap,
 ) {
 
+    private lateinit var dataMarker: DataMarker
     private lateinit var addMarker: Marker
     private var show: Boolean = true
 
@@ -31,7 +32,10 @@ class MoveMarker constructor(
     }
     private val option by lazy { MarkerOptions().anchor(0.1f, 0.5f) }
 
-    fun initMarker() {
+    fun initMarker(dataMarker: DataMarker) {
+
+        this.dataMarker = dataMarker
+
         option.position(dataMarker.latLng)
         option.icon(getMarkerIcon())
 
@@ -55,11 +59,14 @@ class MoveMarker constructor(
 
         addMarker?.let {
             this.show = show
-
             if (show){
-                it.setAnchor(0.1f,0.5f)
+               if ( it.anchorU != 0.1f) {
+                   it.setAnchor(0.1f, 0.5f)
+               }
             }else{
-                it.setAnchor(0.5f,0.5f)
+                if ( it.anchorU != 0.5f) {
+                    it.setAnchor(0.5f, 0.5f)
+                }
             }
             it.setIcon(getMarkerIcon())
         }

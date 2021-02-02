@@ -1,4 +1,4 @@
-package com.sai.module_map.overlay
+package com.sai.module_map.data
 
 import com.amap.api.maps.model.LatLng
 

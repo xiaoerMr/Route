@@ -5,9 +5,7 @@ import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.amap.api.maps.model.LatLng
 import com.component.module_basis.base.BaseFragment
-import com.sai.module_map.marker.DataMarker
-import com.sai.module_map.marker.MoveMarker
-import com.sai.module_map.marker.OverlayMarker
+import com.sai.module_map.data.*
 import com.sai.module_map.overlay.*
 import kotlinx.android.synthetic.main.fragment_map.*
 import kotlinx.coroutines.Job
@@ -38,7 +36,7 @@ class MapFragment : BaseFragment() {
         }
         list
     }
-    private val markers: MutableMap<String, MoveMarker> by lazy {
+    private val markers: MutableMap<String, OverlayMarkerMove> by lazy {
         mutableMapOf()
     }
     private lateinit var launch: Job
@@ -133,8 +131,8 @@ class MapFragment : BaseFragment() {
             if (markers.contains(dataMarker.name)) {
                 markers[dataMarker.name]?.startMove(dataMarker)
             } else {
-                val marker = MoveMarker(mContext, dataMarkers[random.nextInt(4)], mAMap)
-                marker.initMarker()
+                val marker = OverlayMarkerMove(mContext, mAMap)
+                marker.initMarker(dataMarkers[random.nextInt(4)])
                 markers[dataMarker.name] = marker
             }
         }

@@ -1,4 +1,4 @@
-package com.sai.module_map.marker
+package com.sai.module_map.overlay
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import com.amap.api.maps.model.BitmapDescriptorFactory
 import com.amap.api.maps.model.Marker
 import com.amap.api.maps.model.MarkerOptions
 import com.sai.module_map.R
+import com.sai.module_map.data.DataMarker
 
 class OverlayMarker(private val aMap: AMap, private val context: Context) {
     private lateinit var marker: Marker
