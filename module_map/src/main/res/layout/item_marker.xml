@@ -9,8 +9,8 @@
         android:id="@+id/vMarkerIcon"
         android:layout_width="32dp"
         android:layout_height="32dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:src="@drawable/ic_airplane" />
 
@@ -21,9 +21,9 @@
         tools:background="@drawable/ic_border"
         android:orientation="vertical"
         android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/vMarkerIcon"
-        app:layout_constraintEnd_toEndOf="@+id/vMarkerIcon"
-        app:layout_constraintStart_toStartOf="@+id/vMarkerIcon">
+        app:layout_constraintBottom_toBottomOf="@+id/vMarkerIcon"
+        app:layout_constraintStart_toEndOf="@+id/vMarkerIcon"
+        app:layout_constraintTop_toTopOf="@+id/vMarkerIcon">
 
         <TextView
             android:id="@+id/vMarkerTitle"
@@ -32,7 +32,7 @@
             android:layout_gravity="center_horizontal"
             android:fontFamily="sans-serif-black"
             android:textColorHighlight="#58EFE2"
-            android:textColor="@color/white"
+            android:textColor="@color/markerTitle"
             android:textSize="16sp"
             tools:text="名称" />
 

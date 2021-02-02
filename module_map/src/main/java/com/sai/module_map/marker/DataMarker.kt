@@ -2,7 +2,7 @@ package com.sai.module_map.marker
 
 import com.amap.api.maps.model.LatLng
 
-data class MarkerData(
+data class DataMarker(
     var latLng: LatLng,
     val type: Int,
     var alert: Boolean,

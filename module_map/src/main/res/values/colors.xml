@@ -8,4 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#A9F9F133</color>
+
+    <color name="markerTitle">#DEFCFA</color>
+    <color name="overlayLineColor">#008DB8</color>
+    <color name="overlayPolygonStrokeColor">#01C6E0</color>
+    <color name="overlayPolygonFillColor">#A9D0CFCF</color>
+    <color name="overlayCircleStrokeColor">#01C6E0</color>
+    <color name="overlayCircleFillColor">#A9D0CFCF</color>
 </resources>

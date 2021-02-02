@@ -13,21 +13,50 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <Button
-        android:id="@+id/vMapMarkerShow"
+    <LinearLayout
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        android:gravity="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/vMapMarkerShow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="显示隐藏标牌"/>
 
     <Button
         android:id="@+id/vMapMarkerStartMove"
-        app:layout_constraintTop_toBottomOf="@id/vMapMarkerShow"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:text="移动Marker"/>
+    <Button
+        android:id="@+id/vMapLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="显示隐藏线"/>
+    <Button
+        android:id="@+id/vMapPolygon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="显示隐藏多边形"/>
+    <Button
+        android:id="@+id/vMapCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="显示隐藏圆"/>
+    <Button
+        android:id="@+id/vMapMarker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="显示隐藏点"/>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

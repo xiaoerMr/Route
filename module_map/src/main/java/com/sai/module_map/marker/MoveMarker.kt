@@ -1,69 +1,52 @@
 package com.sai.module_map.marker
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import com.amap.api.maps.AMap
-import com.amap.api.maps.model.BitmapDescriptor
-import com.amap.api.maps.model.BitmapDescriptorFactory
-import com.amap.api.maps.model.Marker
-import com.amap.api.maps.model.MarkerOptions
-import com.amap.api.maps.model.animation.Animation
+import com.amap.api.maps.model.*
 import com.amap.api.maps.model.animation.TranslateAnimation
-import com.component.module_basis.loge
 import com.sai.module_map.R
 
 
 class MoveMarker constructor(
     private val context: Context,
-    private var data: MarkerData,
+    private var dataMarker: DataMarker,
     private val aMap: AMap,
 ) {
 
     private lateinit var addMarker: Marker
     private var show: Boolean = true
-    private var showMarker: Boolean = true
 
     private val vectorBorder by lazy {
         val create = VectorDrawableCompat.create(context.resources,
             R.drawable.ic_border,
             context.theme)
+
         create
     }
-    private val option = MarkerOptions()
+    private val option by lazy { MarkerOptions().anchor(0.1f, 0.5f) }
 
     fun initMarker() {
-        option.position(data.latLng)
+        option.position(dataMarker.latLng)
         option.icon(getMarkerIcon())
 
         addMarker = aMap.addMarker(option)
     }
 
-    fun startMove(data: MarkerData) {
+    fun startMove(dataMarker: DataMarker) {
         addMarker?.let {
 
-            this.data = data
+            this.dataMarker = dataMarker
             it.setIcon(getMarkerIcon())
 
-            val animator = TranslateAnimation(data.latLng)
-            animator.setDuration(3000)
+            val animator = TranslateAnimation(dataMarker.latLng)
+            animator.setDuration(3020)
             it.setAnimation(animator)
-//            it.setAnimationListener(object : Animation.AnimationListener {
-//                override fun onAnimationStart() {
-//
-//                }
-//
-//                override fun onAnimationEnd() {
-//                    loge("------onAnimationEnd-----")
-////                    it.position = data.latLng
-//                }
-//            })
             it.startAnimation()
         }
     }
@@ -72,6 +55,12 @@ class MoveMarker constructor(
 
         addMarker?.let {
             this.show = show
+
+            if (show){
+                it.setAnchor(0.1f,0.5f)
+            }else{
+                it.setAnchor(0.5f,0.5f)
+            }
             it.setIcon(getMarkerIcon())
         }
     }
@@ -96,12 +85,12 @@ class MoveMarker constructor(
             vMarkerSignage.visibility = View.GONE
         }
 
-        if (data.alert) {
-            setSignageView(inflate, vMarkerSignage, data.alert)
+        if (dataMarker.alert) {
+            setSignageView(inflate, vMarkerSignage, dataMarker.alert)
         }
 
         vMarkerIcon.setBackgroundResource(R.drawable.ic_airplane)
-        vMarkerIcon.rotation = data.rotate
+        vMarkerIcon.rotation = dataMarker.rotate
 
         return BitmapDescriptorFactory.fromView(inflate)
     }
@@ -127,12 +116,12 @@ class MoveMarker constructor(
 
         vMarkerSignage.background = vectorBorder
 
-        vMarkerTitle.text = data.name
-        vMarkerHeight.text = "高度: ${data.height}m"
-        vMarkerSpeed.text = "速度: ${data.speed}km/h"
-        vMarkerRotate.text = "航向角: ${data.rotate}°"
-        vMarkerLat.text = "纬度: ${data.latLng.latitude}"
-        vMarkerLng.text = "经度: ${data.latLng.longitude}"
+        vMarkerTitle.text = dataMarker.name
+        vMarkerHeight.text = "高度: ${dataMarker.height}m"
+        vMarkerSpeed.text = "速度: ${dataMarker.speed}km/h"
+        vMarkerRotate.text = "航向角: ${dataMarker.rotate}°"
+        vMarkerLat.text = "纬度: ${dataMarker.latLng.latitude}"
+        vMarkerLng.text = "经度: ${dataMarker.latLng.longitude}"
     }
 
 
