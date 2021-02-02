@@ -81,7 +81,7 @@ class OverlayMarkerMove constructor(
     }
 
     private fun getMarkerIcon(): BitmapDescriptor {
-        val inflate = LayoutInflater.from(context).inflate(R.layout.item_marker, null)
+        val inflate = LayoutInflater.from(context).inflate(R.layout.item_marker_icon, null)
 
         val vMarkerIcon = inflate.findViewById<ImageView>(R.id.vMarkerIcon)
         val vMarkerSignage = inflate.findViewById<LinearLayout>(R.id.vMarkerSignage)

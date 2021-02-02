@@ -12,7 +12,7 @@
         app:layout_constraintBottom_toTopOf="@+id/overlayIconTitle"
         app:layout_constraintEnd_toEndOf="@+id/overlayIconTitle"
         app:layout_constraintStart_toStartOf="@+id/overlayIconTitle"
-        app:srcCompat="@drawable/ic_cool" />
+        app:srcCompat="@drawable/ic_tag" />
 
     <TextView
         android:id="@+id/overlayIconTitle"
