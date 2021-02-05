@@ -3,11 +3,13 @@ package com.sai.module_map.overlay
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
+import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import com.amap.api.maps.AMap
+import com.amap.api.maps.AMapUtils
 import com.amap.api.maps.model.*
 import com.amap.api.maps.model.animation.Animation
 import com.amap.api.maps.model.animation.TranslateAnimation
@@ -52,9 +54,12 @@ class OverlayMarkerMove constructor(
                     it.position.latitude != dataMarker.latLng.latitude){
 
                 this.dataMarker = dataMarker
-
+                //创建动画
+                val distance = AMapUtils.calculateLineDistance(it.position, dataMarker.latLng)
                 val animator = TranslateAnimation(dataMarker.latLng)
-                animator.setDuration(3000)
+                val time = distance / dataMarker.speed * 1000
+                animator.setDuration(time.toLong())
+                animator.setInterpolator(LinearInterpolator())
                 it.setAnimation(animator)
                 it.setIcon(getMarkerIcon())
                 it.startAnimation()

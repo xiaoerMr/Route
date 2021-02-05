@@ -144,8 +144,10 @@ class MapRealFragment : Fragment() {
 
             for (dataMarker in adsb) {
                 if (markers.contains(dataMarker.name)) {
+                    //开始移动动画
                     markers[dataMarker.name]!!.startMove(dataMarker)
                 } else {
+                    // 创建Marker
                     val marker = OverlayMarkerMove(mContext, mAMap)
                     marker.initMarker(dataMarker,show)
                     markers[dataMarker.name] = marker
