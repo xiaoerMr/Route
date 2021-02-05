@@ -46,7 +46,7 @@ open class BaseRepository {
 //                NetRequestResult.Error(ResultException(response.code, response.error))
             }else {
                 errorBlock?.let { it() }
-                NetRequestResult.Error(ResultException(response.code, response.error))
+                NetRequestResult.Error(ResultException(response.code, response.msg))
             }
         }
     }

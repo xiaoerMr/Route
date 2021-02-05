@@ -5,6 +5,10 @@ import retrofit2.http.*
 
 interface LoginApiService {
 
+    companion object{
+        const val baseUrl = "http://192.168.1.5:8089/"
+    }
+
 //    @FormUrlEncoded
 //    @POST("api/user/login")
 //    suspend fun login(

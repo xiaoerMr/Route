@@ -9,7 +9,9 @@ import android.widget.TextView
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import com.amap.api.maps.AMap
 import com.amap.api.maps.model.*
+import com.amap.api.maps.model.animation.Animation
 import com.amap.api.maps.model.animation.TranslateAnimation
+import com.component.module_basis.loge
 import com.sai.module_map.R
 import com.sai.module_map.data.DataMarker
 
@@ -21,7 +23,7 @@ class OverlayMarkerMove constructor(
 
     private lateinit var dataMarker: DataMarker
     private lateinit var addMarker: Marker
-    private var show: Boolean = true
+    private var show = false
 
     private val vectorBorder by lazy {
         val create = VectorDrawableCompat.create(context.resources,
@@ -32,9 +34,10 @@ class OverlayMarkerMove constructor(
     }
     private val option by lazy { MarkerOptions().anchor(0.1f, 0.5f) }
 
-    fun initMarker(dataMarker: DataMarker) {
+    fun initMarker(dataMarker: DataMarker, show:Boolean) {
 
         this.dataMarker = dataMarker
+        this.show = show
 
         option.position(dataMarker.latLng)
         option.icon(getMarkerIcon())
@@ -45,13 +48,17 @@ class OverlayMarkerMove constructor(
     fun startMove(dataMarker: DataMarker) {
         addMarker?.let {
 
-            this.dataMarker = dataMarker
-            it.setIcon(getMarkerIcon())
+            if (it.position.longitude != dataMarker.latLng.longitude ||
+                    it.position.latitude != dataMarker.latLng.latitude){
 
-            val animator = TranslateAnimation(dataMarker.latLng)
-            animator.setDuration(3020)
-            it.setAnimation(animator)
-            it.startAnimation()
+                this.dataMarker = dataMarker
+
+                val animator = TranslateAnimation(dataMarker.latLng)
+                animator.setDuration(3000)
+                it.setAnimation(animator)
+                it.setIcon(getMarkerIcon())
+                it.startAnimation()
+            }
         }
     }
 

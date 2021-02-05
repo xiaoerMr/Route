@@ -132,7 +132,7 @@ class MapFragment : BaseFragment() {
                 markers[dataMarker.name]?.startMove(dataMarker)
             } else {
                 val marker = OverlayMarkerMove(mContext, mAMap)
-                marker.initMarker(dataMarkers[random.nextInt(4)])
+                marker.initMarker(dataMarkers[random.nextInt(4)],show)
                 markers[dataMarker.name] = marker
             }
         }

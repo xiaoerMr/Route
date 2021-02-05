@@ -66,4 +66,6 @@ dependencies {
     implementation DepAndroid.kotlinxCoroutines
     implementation DepAndroid.runtimeKtx
 
+    implementation DepHttp.retrofit
+
 }

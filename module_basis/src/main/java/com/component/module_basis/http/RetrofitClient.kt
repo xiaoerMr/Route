@@ -11,21 +11,22 @@ import java.util.concurrent.TimeUnit
 
 class RetrofitClient {
 
-    private var retrofit: Retrofit
+    private lateinit var retrofit: Retrofit
 
     companion object {
         val instance: RetrofitClient by lazy { RetrofitClient() }
     }
 
-    init {
+    private fun getRetrofit(baseUrl:String){
         retrofit = Retrofit.Builder()
             .client(initClient())
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(ApiService.baseUrl)
+            .baseUrl(baseUrl)
             .build()
     }
 
-    fun <T> onCreateApiService(service: Class<T>): T {
+    fun <T> onCreateApiService(service: Class<T>,baseUrl:String): T {
+        getRetrofit(baseUrl)
         return retrofit.create(service)
     }
 

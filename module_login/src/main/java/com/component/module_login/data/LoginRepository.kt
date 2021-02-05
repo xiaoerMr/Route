@@ -8,8 +8,9 @@ import com.component.module_login.http.ResUser
 
 class LoginRepository : BaseRepository() {
 
+
     private val apiService by lazy {
-        val onCreateApiService = RetrofitClient.instance.onCreateApiService(LoginApiService::class.java)
+        val onCreateApiService = RetrofitClient.instance.onCreateApiService(LoginApiService::class.java,LoginApiService.baseUrl)
         onCreateApiService
     }
 
