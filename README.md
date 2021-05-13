@@ -5,14 +5,16 @@
 该项目只是简单的组件化开发的示例，搭建了组件化开发的雏形。 暂时没有实现内容的开发工作，目前实现功能有： 网络模块的封装、ARoute的使用方法、登陆功能的实现（UI未实现）。
 
 ## 仓库镜像
-// 阿里云云效仓库：https://maven.aliyun.com/mvn/guide
+- 阿里云云效仓库：https://maven.aliyun.com/mvn/guide
 maven { url 'https://maven.aliyun.com/repository/jcenter' }
 maven { url 'https://maven.aliyun.com/repository/google' }
-// 华为开源镜像：https://mirrors.huaweicloud.com
+
+- 华为开源镜像：https://mirrors.huaweicloud.com
 maven { url 'https://repo.huaweicloud.com/repository/maven' }
-// JitPack 远程仓库：https://jitpack.io
+
+- JitPack 远程仓库：https://jitpack.io
 maven { url 'https://jitpack.io' }
-// MavenCentral 远程仓库：https://mvnrepository.com
+- MavenCentral 远程仓库：https://mvnrepository.com
 mavenCentral()
 
 ## 组件划分
